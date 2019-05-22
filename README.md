@@ -16,4 +16,4 @@ $ pipenv install
 
 > Then navigate to [localhost:5000](http://127.0.0.1:5000)
 
-> For testing `Flask REST Sample.postman_collection.json` is there, just import that into [postman](https://www.getpostman.com)
+> For testing `postman_collection.json` is there, just import that into [postman](https://www.getpostman.com)
