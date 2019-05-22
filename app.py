@@ -31,48 +31,59 @@ def add_product():
   db.session.add(new_product)
   db.session.commit()
 
-  return product_schema.jsonify(new_product)
+  return jsonify(msg='Product ['+ new_product.name +'] created successfully'), 200
 
 # Get All Products
 @app.route('/products', methods=['GET'])
 def get_products():
   all_products = Product.query.all()
-  result = products_schema.dump(all_products)
-  return jsonify(result.data)
+  result = prods_schema.dump(all_products)
+  return jsonify(err=False, data=result.data), 200
 
 # Get Single Products
 @app.route('/products/<id>', methods=['GET'])
 def get_product(id):
   product = Product.query.get(id)
-  return product_schema.jsonify(product)
+
+  if product is None:
+    return jsonify(err=True, msg='Invalid request, product not found'), 200
+  else:
+    # print('product', product.serialize)
+    return jsonify(err=False, data=product.serialize), 200
 
 # Update a Product
 @app.route('/products/<id>', methods=['PUT'])
 def update_product(id):
   product = Product.query.get(id)
 
-  name = request.json['name']
-  description = request.json['description']
-  price = request.json['price']
-  qty = request.json['qty']
+  if product is None:
+    return jsonify(err=True, msg='Invalid request, product not found'), 200
+  else:
+    name = request.json['name']
+    description = request.json['description']
+    price = request.json['price']
+    qty = request.json['qty']
 
-  product.name = name
-  product.description = description
-  product.price = price
-  product.qty = qty
+    product.name = name
+    product.description = description
+    product.price = price
+    product.qty = qty
 
-  db.session.commit()
-
-  return product_schema.jsonify(product)
+    db.session.commit()
+    return jsonify(err=False, msg='Product updated successfully'), 200
 
 # Delete Product
 @app.route('/products/<id>', methods=['DELETE'])
 def delete_product(id):
   product = Product.query.get(id)
-  db.session.delete(product)
-  db.session.commit()
+  
+  if product is None:
+    return jsonify(err=True, msg='Invalid request, product not found'), 200
+  else:
+    db.session.delete(product)
+    db.session.commit()
 
-  return product_schema.jsonify(product)
+    return jsonify(err=False, msg=product.name + ' deleted successfully'), 200
 
 # Run server
 if __name__ == '__main__':

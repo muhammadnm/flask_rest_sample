@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "56b70627-7c19-44ac-ae36-2bf73902fec8",
+		"name": "Flask REST Sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET list of products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "iPhone-1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Apple iPhone one",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "99.90",
+							"type": "text"
+						},
+						{
+							"key": "qty",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST new product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"iPhone-2\",\n\t\"description\": \"Apple iPhone-2 was better than iPhone-1\",\n\t\"price\": \"199.90\",\n\t\"qty\": \"100\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/products",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET single product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "iPhone-1",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Apple iPhone one",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "99.90",
+							"type": "text"
+						},
+						{
+							"key": "qty",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/products/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"iPhone-2s\",\n\t\"description\": \"Description updated using PUT: Apple iPhone-2s was better than iPhone-1\",\n\t\"price\": 99.00,\n\t\"qty\": 70\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/products/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"iPhone-2s\",\n\t\"description\": \"Description updated using PUT: Apple iPhone-2s was better than iPhone-1\",\n\t\"price\": 99.00,\n\t\"qty\": 70\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/products/6",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
